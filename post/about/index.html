@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>关于 | 橘子柚子橙子</title>
 <meta name="description" content="enjoy coding" />
-<link rel="shortcut icon" href="https://shumanman.mobi//favicon.ico?v=1569830660063">
+<link rel="shortcut icon" href="https://shumanman.mobi//favicon.ico?v=1569831703036">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://shumanman.mobi//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://shumanman.mobi/">
-  <img class="avatar" src="https://shumanman.mobi//images/avatar.png?v=1569830660063" alt="">
+  <img class="avatar" src="https://shumanman.mobi//images/avatar.png?v=1569831703036" alt="">
   </a>
   <h1 class="site-title">
     橘子柚子橙子
@@ -123,28 +123,25 @@
 
         
           
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-<div id="gitalk-container"></div>
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
 
 <script>
 
-  var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-
-  gitalk.render('gitalk-container')
+var options = {
+  shortname: '',
+  apikey: 'aoY9lzerbi4oRFVzJTC6tMK4O7HQrTeiEJC2zPpqlzhulwEf4dngw7yvTEIwAkNL',
+}
+if ('iZ7xLrcjjNt4r3akokEtTzXfCcDgC01GtKPBMDBGUPlZysACCtcvw58gNTg40JVy') {
+  options.api = 'iZ7xLrcjjNt4r3akokEtTzXfCcDgC01GtKPBMDBGUPlZysACCtcvw58gNTg40JVy'
+}
+var dsqjs = new DisqusJS(options)
 
 </script>
-
-          
 
           
         
