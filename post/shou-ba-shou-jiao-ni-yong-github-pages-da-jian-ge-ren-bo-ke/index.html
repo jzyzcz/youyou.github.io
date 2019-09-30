@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>手把手教你用github pages搭建个人博客 | 橘子柚子橙子</title>
 <meta name="description" content="enjoy coding" />
-<link rel="shortcut icon" href="https://shumanman.mobi//favicon.ico?v=1569831762549">
+<link rel="shortcut icon" href="https://shumanman.mobi//favicon.ico?v=1569854109954">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://shumanman.mobi//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://shumanman.mobi/">
-  <img class="avatar" src="https://shumanman.mobi//images/avatar.png?v=1569831762549" alt="">
+  <img class="avatar" src="https://shumanman.mobi//images/avatar.png?v=1569854109954" alt="">
   </a>
   <h1 class="site-title">
     橘子柚子橙子
@@ -80,7 +80,7 @@
                 2019-09-30
               </span>
               <span>
-                1 min read
+                3 min read
               </span>
               
                 <a href="https://shumanman.mobi//tag/NfJcKygu1r" class="post-tag">
@@ -93,17 +93,74 @@
               
             </div>
             
-              <img class="post-feature-image" src="https://shumanman.mobi//post-images/shou-ba-shou-jiao-ni-yong-github-pages-da-jian-ge-ren-bo-ke.jpg" alt="">
+              <img class="post-feature-image" src="https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/453a6b8bb50842bdb81d81969d0c96e4.jpeg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>手把手教你5分钟搭建个人博客</p>
-<!-- more -->
-<p>晚上更新, 先占坑.</p>
+                <blockquote>
+<p>拥有一个自己的博客, 是每个程序员的梦想. --- 鲁迅</p>
+</blockquote>
+<p>已经记不起来, 这是我第几次折腾博客了.</p>
+<p>前些次都是为了搭博客而搭博客, 以至于博客建完之后就再也不维护, 只有一篇&quot;hello, world&quot;放在那里丢人现眼, 真的是舍本逐末.</p>
+<figure data-type="image" tabindex="1"><img src="https://shumanman.mobi//post-images/1569850384941.jpg" alt=""></figure>
+<p>这一次不一样了!</p>
+<p>我决定洗心革面, 认真更新内容.</p>
+<figure data-type="image" tabindex="2"><img src="https://shumanman.mobi//post-images/1569850812023.jpg" alt=""></figure>
+<p>为了把主要精力放到博客内容上, 我选择了用最简单的方式<code>github pages</code>来搭建本博客.</p>
+<p>下面开始正文.</p>
+<h3 id="1-首先需要有一个github账号-点击注册">1. 首先需要有一个github账号, <a href="https://github.com/">点击注册</a>.</h3>
+<h3 id="2-新建一个仓库">2. 新建一个仓库</h3>
+<p>例如: memeda.github.io</p>
+<p>ps: github pages的仓库名字需要以<code>github.io</code>作为结尾.<br>
+<img src="https://shumanman.mobi//post-images/1569851376189.png" alt=""></p>
+<h3 id="3-设置仓库">3. 设置仓库</h3>
+<p>点击&quot;settings&quot;, 进入仓库设置页面.</p>
+<figure data-type="image" tabindex="3"><img src="https://shumanman.mobi//post-images/1569851610354.png" alt=""></figure>
+<p>找到&quot;GitHub Pages&quot;这一处, <code>Source</code>选择<strong>master</strong></p>
+<figure data-type="image" tabindex="4"><img src="https://shumanman.mobi//post-images/1569851729804.png" alt=""></figure>
+<p>选择之后, 你就会发现页面在进行刷新.</p>
+<p>稍等片刻刷新完成. 再把页面滚动到此处, 你会看到一行提示, 类似于<code>Your site is ready to be published at https://jzyzcz.github.io/memeda.github.io/.</code></p>
+<p>其中的链接: <code>https://jzyzcz.github.io/memeda.github.io/</code>就是你的博客地址.</p>
+<p>点击此链接, 不出意外的话, 你的博客就呈现在你的眼前了.</p>
+<h3 id="4-给博客绑定自己的域名">4. 给博客绑定自己的域名</h3>
+<p>至此, 博客已经生成了, 非常简单的吧.</p>
+<figure data-type="image" tabindex="5"><img src="https://shumanman.mobi//post-images/1569852525888.png" alt=""></figure>
+<p>但是这个博客的域名太长了, 非常不容易让人记忆, 能不能改成自定义的域名呢?</p>
+<p>肯定可以, 像下面这样操作就行了.</p>
+<p>找到<code>Custom domain</code>这一处, 在输入框内填写自己的域名, 例如: <a href="www.shumanman.mobi">shumanman.mobi</a>, 点击保存.</p>
+<p>接下来需要去域名提供商那里进行域名的解析. 我的域名是在阿里云购买的, 此处就以阿里云为例.</p>
+<p>登录阿里云控制台, 点击左侧的&quot;域名&quot;.<br>
+<img src="https://shumanman.mobi//post-images/1569852943117.png" alt=""></p>
+<p>找到你要绑定的那条域名, 点击解析:<br>
+<img src="https://shumanman.mobi//post-images/1569853012031.png" alt=""></p>
+<p>类似下面, 新建两条记录:<br>
+<img src="https://shumanman.mobi//post-images/1569853110514.png" alt=""></p>
+<figure data-type="image" tabindex="6"><img src="https://shumanman.mobi//post-images/1569853194319.png" alt=""></figure>
+<p>记录类型选择<strong>CNAME</strong><br>
+记录值填写你的<strong>仓库名称</strong></p>
+<p>点击保存就行了.</p>
+<p>设置完之后, 过几分钟在浏览器输入你刚才设置的域名, 就可以访问你的博客了.</p>
+<p>以上就是大致的设置过程.</p>
+<p>如果你在设置的过程中, 遇到了什么问题, 可以<a href="https://shumanman.mobi/post/about/">邮件</a>联系我.</p>
+<p>最后, 祝大家国庆节快乐.</p>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-%E9%A6%96%E5%85%88%E9%9C%80%E8%A6%81%E6%9C%89%E4%B8%80%E4%B8%AAgithub%E8%B4%A6%E5%8F%B7-%E7%82%B9%E5%87%BB%E6%B3%A8%E5%86%8C">1. 首先需要有一个github账号, 点击注册.</a></li>
+<li><a href="#2-%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93">2. 新建一个仓库</a></li>
+<li><a href="#3-%E8%AE%BE%E7%BD%AE%E4%BB%93%E5%BA%93">3. 设置仓库</a></li>
+<li><a href="#4-%E7%BB%99%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D">4. 给博客绑定自己的域名</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
               </div>
             </div>
           </article>
