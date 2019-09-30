@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shumanman.mobi/</id>
     <title>橘子柚子橙子</title>
-    <updated>2019-09-30T06:41:42.596Z</updated>
+    <updated>2019-09-30T06:42:52.024Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shumanman.mobi/"/>
     <link rel="self" href="https://shumanman.mobi//atom.xml"/>
@@ -16,11 +16,9 @@
         <link href="https://shumanman.mobi//post/shou-ba-shou-jiao-ni-yong-github-pages-da-jian-ge-ren-bo-ke">
         </link>
         <updated>2019-09-30T06:33:09.000Z</updated>
-        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://shumanman.mobi//post-images/1569825675020.jpg" alt=""></figure>
-<p>手把手教你5分钟搭建个人博客</p>
+        <summary type="html"><![CDATA[<p>手把手教你5分钟搭建个人博客</p>
 ]]></summary>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://shumanman.mobi//post-images/1569825675020.jpg" alt=""></figure>
-<p>手把手教你5分钟搭建个人博客</p>
+        <content type="html"><![CDATA[<p>手把手教你5分钟搭建个人博客</p>
 ]]></content>
     </entry>
 </feed>
