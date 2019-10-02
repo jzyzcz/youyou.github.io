@@ -1,0 +1,317 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>用Python从微信中获取潜在客户 | 橘子柚子橙子</title>
+<meta name="description" content="enjoy coding" />
+<link rel="shortcut icon" href="https://shumanman.mobi//favicon.ico?v=1569978925964">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://shumanman.mobi//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://shumanman.mobi/">
+  <img class="avatar" src="https://shumanman.mobi//images/avatar.png?v=1569978925964" alt="">
+  </a>
+  <h1 class="site-title">
+    橘子柚子橙子
+  </h1>
+  <p class="site-description">
+    enjoy coding
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/jzyzcz" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+        <a href="https://www.zhihu.com/people/hong-guo-guo-79/activities" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              用Python从微信中获取潜在客户
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-10-02
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>在开始之前, 先简单说下我为何会写这篇文章?</p>
+</blockquote>
+<p>为了开发新客户, 领导安排公司的客服们加入了很多的微信群, 在群内收集目标客户的联系方式.</p>
+<p>然而她们收集客户信息的方式非常的原始: <strong>在微信群内翻看群聊记录 -&gt; 寻找客户发出的电话号码 -&gt; 复制 -&gt; 打开公司内部APP -&gt; 填写表单 -&gt; 粘贴客户电话号码 -&gt; 提交 -&gt; 继续翻看群聊记录</strong>.<br>
+如此这般循环往复. 效率低且枯燥.<br>
+我觉得客服小姐姐们, 肯定是很不乐意做这项工作的.</p>
+<p>所以我向领导提议, 用代码来实现这个工作.<br>
+目前, 上面的这个流程我已经用代码实现了, 为了记录实现的过程, 就有了这篇文章.</p>
+<p>希望对遇到类似需求的您, 能够有所帮助.</p>
+<blockquote>
+<p>本文目录</p>
+</blockquote>
+<ol>
+<li>介绍需要用到的工具</li>
+<li>备份手机资料并导出微信聊天记录数据</li>
+<li>使用DB Browser查看微信聊天数据</li>
+<li>用Python读取聊天数据</li>
+<li>总结</li>
+</ol>
+<h1 id="1-需要用到的工具">1. 需要用到的工具</h1>
+<p>俗话说, 工欲善其事, 必先利其器. 合适的工具, 往往能够事半功倍.<br>
+这里用到的工具有:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">iPhone手机</td>
+<td style="text-align:left">抱歉, 我没有安卓手机, 所有没有在安卓机上进行测试</td>
+</tr>
+<tr>
+<td style="text-align:left">iTunes软件</td>
+<td style="text-align:left">用来备份iPhone手机数据, 备份时, <strong>一定</strong>要选择**&quot;不加密&quot;**备份, 否则数据无法读取</td>
+</tr>
+<tr>
+<td style="text-align:left">iPhone Backup Extractor</td>
+<td style="text-align:left">用来导出微信数据库, 虽然是收费软件, 但是其免费的功能在这里已经够用了</td>
+</tr>
+<tr>
+<td style="text-align:left">DB Browser for SQLite</td>
+<td style="text-align:left">免费的数据库可视化软件, 用来查看sqlite数据库</td>
+</tr>
+<tr>
+<td style="text-align:left">Python 3.7</td>
+<td style="text-align:left"><code>os</code>, <code>sqlite3</code>, <code>re</code>,  <code>pymysql</code>, <code>emoji</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-备份手机资料并导出微信聊天记录数据">2.  备份手机资料并导出微信聊天记录数据</h1>
+<h2 id="21-备份手机资料到itunes">2.1 备份手机资料到iTunes</h2>
+<p>用数据线把iPhone连接至电脑, 打开iTunes进行备份.<br>
+不要勾选&quot;加密备份&quot;<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-5927e70e78eb24e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="不要勾选&quot;加密备份&quot;"></p>
+<h2 id="22-导出聊天记录数据">2.2 导出聊天记录数据</h2>
+<p>这一步需要借助一个软件<a href="%5Bhttps://www.iphonebackupextractor.com/zh/%5D(https://www.iphonebackupextractor.com/zh/)">iPhone Backup Extractor</a>.<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-3a161ccf4c91c7ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iPhone Backup Extractor"></p>
+<p>这个软件虽然收费, 但是其免费功能对我们来说已经够用了.<br>
+打开这个软件, 可以看到如下界面:<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-a692fdae019fc869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="软件截图标注"><br>
+通过上图可以看到:<br>
+左侧是已经备份的iPhone手机列表<br>
+右侧选择<code>expert mode</code>, 稍等一会儿之后, 就会看到软件右侧区域显示了备份文件的目录结构.</p>
+<p>那么, 我们需要备份的文件是什么?在哪里呢?</p>
+<p>我们需要导出的文件是: <code>MM.sqlite</code>, <code>WCDB_Contact.sqlite</code><br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-f696508a988f9ad6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="需要导出的文件"><br>
+其中 <code>MM.sqlite</code>是存放微信聊天内容相关的数据, <code>WCDB_Contact.sqlite</code>是微信联系人相关的数据.</p>
+<p>文件路径是: <code>Applications/com.tencent.xin/微信名称MD5/DB/</code><br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-802ba0cfd0af7845.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件路径"></p>
+<p>按照图片的标注, 选中这两个文件, 然后点击<code>Extract selected</code>按钮, 进行文件的导出.<br>
+免费版的软件, 在导出文件之前, 需要等待10s.<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-13381249d9ce7ebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="导出文件"><br>
+文件导出的速度很快, 几乎不用等待.这个时候打开桌面, 就可以看到导出后的文件了.<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-b0cb30df3546ac5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="导出后的文件"></p>
+<h1 id="3-使用db-browser查看微信聊天数据">3. 使用DB Browser查看微信聊天数据</h1>
+<p>首先安装数据库可视化工具DB Browser for SQLite, <a href="%5Bhttps://sqlitebrowser.org/%5D(https://sqlitebrowser.org/)">点击下载</a><br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-f8f01178817680d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DB Browser"></p>
+<p>打开这个软件, 点击<strong>打开数据库</strong><br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-3f3baab6f384f6d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开数据库"><br>
+选中导出后的文件<code>MM.sqlite</code>:<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-d9c2699095017a1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看聊天文件"></p>
+<p>打开文件之后, 点击<strong>浏览数据</strong>, 然后在下拉框里可以快速切换不同的表.<br>
+其中, 以<strong>Chat</strong>开头的表, 就是存放聊天记录的表. <code>Message</code>字段就是聊天内容.<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-54c5f62317143350.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Message字段"></p>
+<p>接着, 我们再打开另外一个文件<code>WCDB_Contact.sqlite</code>:<br>
+<img src="https://upload-images.jianshu.io/upload_images/5676429-9f275ad71e8f6daa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="联系人"><br>
+切换到<strong>Friend</strong>这张表, 可以看到如下字段.<br>
+其中, <code>dbContactRemark</code>字段应该就是联系人的备注;<br>
+<code>userName</code>就是联系人的微信名称, 其中名称带有**@chatroom**的, 表示这是一个微信群聊;</p>
+<p>好了, 现在我们已经找到了微信聊天记录, 也找到了微信联系人, 就可以开始用Python进行处理了.</p>
+<h1 id="4-用python读取聊天记录内容">4. 用Python读取聊天记录内容</h1>
+<p>实现过程很简单, 我看了自己的代码, 总共不到100行, 所以代码就不贴出来了, 因为写的很烂 - . -<br>
+只简单说下思路吧.</p>
+<ol>
+<li>连接这两个导出的数据库.</li>
+<li>循环遍历其中的表.</li>
+<li>遍历每一条聊天内容,并用正则表达式匹配其中的电话号码.</li>
+<li>如果该条聊天记录存在电话号码,则写入自己的数据库. 写入的字段有 <strong>电话号码</strong>, <strong>微信昵称</strong>, <strong>聊天内容</strong>, <strong>发送时间</strong></li>
+</ol>
+<p>大概就是以上这些.</p>
+<h1 id="5-总结">5. 总结</h1>
+<p>整个过程的实现还是比较快的, 大概花了半个工作日.<br>
+代码虽然简单, 却实实在在给公司节省了不少的人力成本, 还是蛮有成就感的.</p>
+<p>我自己的体会: <strong>要多观察周围的生活, 找到其中重复劳作的部分, 并用程序去优化, 可能这就是做程序员的乐趣所在.</strong></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#1-%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7">1. 需要用到的工具</a></li>
+<li><a href="#2-%E5%A4%87%E4%BB%BD%E6%89%8B%E6%9C%BA%E8%B5%84%E6%96%99%E5%B9%B6%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%95%B0%E6%8D%AE">2.  备份手机资料并导出微信聊天记录数据</a>
+<ul>
+<li><a href="#21-%E5%A4%87%E4%BB%BD%E6%89%8B%E6%9C%BA%E8%B5%84%E6%96%99%E5%88%B0itunes">2.1 备份手机资料到iTunes</a></li>
+<li><a href="#22-%E5%AF%BC%E5%87%BA%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%95%B0%E6%8D%AE">2.2 导出聊天记录数据</a></li>
+</ul>
+</li>
+<li><a href="#3-%E4%BD%BF%E7%94%A8db-browser%E6%9F%A5%E7%9C%8B%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E6%95%B0%E6%8D%AE">3. 使用DB Browser查看微信聊天数据</a></li>
+<li><a href="#4-%E7%94%A8python%E8%AF%BB%E5%8F%96%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%86%85%E5%AE%B9">4. 用Python读取聊天记录内容</a></li>
+<li><a href="#5-%E6%80%BB%E7%BB%93">5. 总结</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://shumanman.mobi//post/shou-ba-shou-jiao-ni-yong-github-pages-da-jian-ge-ren-bo-ke">
+              <h3 class="post-title">
+                手把手教你用github pages搭建个人博客
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'coder',
+  apikey: 'aoY9lzerbi4oRFVzJTC6tMK4O7HQrTeiEJC2zPpqlzhulwEf4dngw7yvTEIwAkNL',
+}
+if ('iZ7xLrcjjNt4r3akokEtTzXfCcDgC01GtKPBMDBGUPlZysACCtcvw58gNTg40JVy') {
+  options.api = 'iZ7xLrcjjNt4r3akokEtTzXfCcDgC01GtKPBMDBGUPlZysACCtcvw58gNTg40JVy'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>|
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_uv">
+  总访问次数:<span id="busuanzi_value_site_uv"></span>
+</span> | 
+  <a class="rss" href="https://shumanman.mobi//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
