@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shumanman.mobi/</id>
     <title>橘子柚子橙子</title>
-    <updated>2019-10-02T02:03:03.661Z</updated>
+    <updated>2019-10-11T07:47:01.654Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shumanman.mobi/"/>
     <link rel="self" href="https://shumanman.mobi//atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://shumanman.mobi//images/avatar.png</logo>
     <icon>https://shumanman.mobi//favicon.ico</icon>
     <rights>All rights reserved 2019, 橘子柚子橙子</rights>
+    <entry>
+        <title type="html"><![CDATA[第001题. 这个switch输出的是个啥? 你可能会做错哦...]]></title>
+        <id>https://shumanman.mobi//post/di-001-ti-zhe-ge-switch-shu-chu-de-shi-ge-sha-ni-ke-neng-hui-zuo-cuo-e</id>
+        <link href="https://shumanman.mobi//post/di-001-ti-zhe-ge-switch-shu-chu-de-shi-ge-sha-ni-ke-neng-hui-zuo-cuo-e">
+        </link>
+        <updated>2019-10-11T07:25:11.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用Python从微信中获取潜在客户]]></title>
         <id>https://shumanman.mobi//post/yong-python-cong-wei-xin-zhong-huo-qu-qian-zai-ke-hu</id>

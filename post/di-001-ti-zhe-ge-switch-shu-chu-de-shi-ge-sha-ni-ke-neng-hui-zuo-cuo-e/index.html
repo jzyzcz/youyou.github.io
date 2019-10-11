@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | 橘子柚子橙子</title>
+<title>第001题. 这个switch输出的是个啥? 你可能会做错哦... | 橘子柚子橙子</title>
 <meta name="description" content="enjoy coding" />
 <link rel="shortcut icon" href="https://shumanman.mobi//favicon.ico?v=1570779976985">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -90,54 +90,70 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              第001题. 这个switch输出的是个啥? 你可能会做错哦...
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2019-10-11
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
             
+              <img class="post-feature-image" src="https://shumanman.mobi//post-images/di-001-ti-zhe-ge-switch-shu-chu-de-shi-ge-sha-ni-ke-neng-hui-zuo-cuo-e.png" alt="">
+            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+                <p>请写出下面代码的输出内容:</p>
+<pre><code class="language-javascript">const test = 2
+switch (test) {
+  case 1:
+    console.log(1)
+  case 2:
+    console.log(2)
+  case 3:
+    console.log(3)
+  default:
+    console.log('default')
+}
+</code></pre>
+<p>各位大佬看完这几句代码, 可能会觉得智商受到了侮辱: are you kidding me ?? 问我这么简单的问题, 瞧不起谁呢??是觉得我的发型不够程序员吗? 最后肯定是输出 <code>&quot;2&quot;</code> 啊!</p>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/5676429-240c272fd906dc79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="鄙视你"></figure>
+<p>但是看似简单的地方, 却比较容易出错.<br>
+让我们运行一下这段代码, 看一下最后的输出结果:</p>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/5676429-52fc7f2b2d350f60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果并不是2"></figure>
+<p>最后的结果是: <code>2 3 default</code></p>
+<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/5676429-58656cfaec81658d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="wtf"></figure>
+<p>为啥会这样呢?</p>
+<p>如果大佬们再仔细看一下这段代码, 就会发现: <strong>每个case语句中, 都没有进行break</strong>, 也就是说, <strong>代码执行完了 <code>case 2</code>子句之后, 并没有跳出switch, 而是继续执行switch中的下一个语句, 接着打印出了<code>3 default</code></strong></p>
+<p>看一下MDN是如何解释的:</p>
+<blockquote>
+<p><a href="%5B%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5...(image-b2bcb9-1569769177080)%5D">可选的 <code>break</code>语句确保程序立即从相关的 case 子句中跳出 switch 并接着执行 switch 之后的语句。若 <code>break</code> 被省略，程序会继续执行 <code>switch</code> 语句中的下一条语句。<br>
+</a></p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>作为一个面向谷歌编程的程序员, 每天都从网络上索取大量的知识.<br>
-我的小学老师告诉我, <code>做人不可以只索取而不回报</code>.<br>
-所以就有了这个小站, 用来分享我的一些浅薄的经验, 如果恰巧能帮到您, 那可真是太好了.</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>一个兴趣使然的程序员</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>读书, 写代码, 拍照片, 跑步, 看电影</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>onebookman@foxmail.com</p>
-<p>或者是关注我的公众号, <strong>每天刷一题</strong><br>
-<img src="https://shumanman.mobi//post-images/1569855121611.png" alt=""></p>
+<p>完.</p>
+<p>以上内容同步更新到了我的公众号<strong>每天刷一题</strong>, 大佬, 来都来了, 关注下吧, 会不定期赠送学习资料的!</p>
+<figure data-type="image" tabindex="4"><img src="https://upload-images.jianshu.io/upload_images/5676429-8dd3fa1e13b306c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="每天刷一题"></figure>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://shumanman.mobi//post/yong-python-cong-wei-xin-zhong-huo-qu-qian-zai-ke-hu">
+              <h3 class="post-title">
+                用Python从微信中获取潜在客户
+              </h3>
+            </a>
+          </div>
         
 
         
